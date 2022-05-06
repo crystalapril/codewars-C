@@ -68,3 +68,14 @@ int is_palindrome(char *s)
 }
 
 
+#answer6.0 by april using pointer
+bool is_palindrome(const char * str_in) {
+  int len = strlen(str_in);
+  const char * reverse = str_in + len -1;
+  for (;*str_in !='\0';str_in++,reverse--) {
+    if (tolower(*str_in) != tolower(*reverse)) {
+      return 0;
+    }
+  }
+  return 1;
+}
