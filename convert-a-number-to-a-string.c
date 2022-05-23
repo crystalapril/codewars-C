@@ -152,3 +152,49 @@ char *number_to_string(int number) {
   return p;
 }
 
+
+#answer2.1 by april: struct without function
+#include <stdlib.h>
+#include <stdio.h>
+
+char *number_to_string(int number) {
+  int count = 0;
+  int temp = abs(number);
+  int fac = 1;
+  while (temp > 9 ) {
+    temp /= 10;
+    count++;
+    fac *= 10;
+  }
+  char *p = calloc(count+3,sizeof(char));
+
+  struct sign {
+    int i;
+    int e;
+    int n;
+  };
+
+  struct sign s;
+  if (number < 0) {
+    s.i = 1;
+    s.e = 2;
+    s.n = - number;
+    p[0] = '-';
+  } else if (number >= 0) {
+    s.i = 0;
+    s.e = 1;
+    s.n = number;
+  }
+
+  for (; s.i< count + s.e; s.i++){
+    int r = s.n / fac;
+    p[s.i] = r + '0';
+    s.n = s.n % fac;
+    fac /= 10;
+  }
+  p[count + s.e] = '\0';
+  return p;
+}
+
+
+
