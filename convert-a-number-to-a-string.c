@@ -66,6 +66,47 @@ int main(void) {
 }
 
 
+#answer1.1 by april: pointer without function
+#include <stdlib.h>
+#include <stdio.h>
+
+char *number_to_string(int number) {
+  int count = 0;
+  int temp = abs(number);
+  int fac = 1;
+  while (temp > 9 ) {
+    temp /= 10;
+    count++;
+    fac *= 10;
+  }
+  char *p = calloc(count+3,sizeof(char));
+  int i,e;
+  int *ii = &i;
+  int *ee = &e;
+  int *n = &number;
+
+  if (number < 0) {
+    *ii = 1;
+    *ee = 2;
+    *n = - number;
+    p[0] = '-';
+  } else if (number >= 0) {
+    *ii = 0;
+    *ee = 1;
+    *n = number;
+}
+
+  for (; i< count + e; i++){
+    int r = number / fac;
+    p[i] = r+ '0';
+    number = number % fac;
+    fac /= 10;
+  }
+  p[count + e] = '\0';
+  return p;
+}
+
+
 #answer2.0 by april : struct
 struct sign {
     int i;
