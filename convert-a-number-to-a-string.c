@@ -197,4 +197,40 @@ char *number_to_string(int number) {
 }
 
 
+#answer3.0 by april
+#include <stdlib.h>
+#include <stdio.h>
+
+char *number_to_string(int number) {
+  int count = 0;
+  int temp = abs(number);
+  int fac = 1;
+  while (temp > 9 ) {
+    temp /= 10;
+    count++;
+    fac *= 10;
+  }
+  char *p = calloc(count+3,sizeof(char));
+
+  int i, e, n;
+  if (number < 0) {
+    i = 1;
+    e = 2;
+    n = - number;
+    p[0] = '-';
+  } else if (number >= 0) {
+    i = 0;
+    e = 1;
+    n = number;
+  }
+
+  for (; i< count + e; i++){
+    int r = n / fac;
+    p[i] = r + '0';
+    n = n % fac;
+    fac /= 10;
+  }
+  p[count + e] = '\0';
+  return p;
+}
 
