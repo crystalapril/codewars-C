@@ -43,3 +43,20 @@ int points(char* games[]) {
 }
 //int sscanf(const char *str, const char *format, ...) 从字符串读取格式化输入
 
+
+#answer4.0
+int points(const char* const games[10]) {
+
+    char *s;
+    int k=0;
+      for(int i=0;i<10;i++)
+        {
+          s=games[i];
+            if(*s>*(s+2))
+            k=k+3;
+            if(*s==*(s+2))
+            k=k+1;
+    }
+    return k;
+
+}
