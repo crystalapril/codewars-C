@@ -31,6 +31,15 @@ int correct_tail(const char *body, const char *tail) {
 }
 
 
+#answer3.1 by april
+int correct_tail(const char *body, const char *tail) {
+  while (*body != '\0') {
+    body++;
+  }    
+  return *(--body) == *tail ? 1:0;
+}
+
+
 #answer4.0
 #include <string.h>
 
